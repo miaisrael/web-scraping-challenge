@@ -17,7 +17,6 @@ def index():
 
 # Route that will trigger the scrape function    
 @app.route("/scrape")
-
 def scrape():
 
     # Scrape function
