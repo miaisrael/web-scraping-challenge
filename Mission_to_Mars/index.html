@@ -1,9 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!---Bootstrap and CSS-->
 <head>
-
+  <meta charset="UTF-8">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="bootstrap.css">
 </head>
-<body>
 
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+    </div>
+  
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="heading">Latest Mars News</h2>
+        <b><h3 class="heading">{{mars_data.news_title}}</h3></b>
+        <b><h3 class="heading">{{mars_data.news_paragraph}}</h3></b>
+        <h4>{{mars_data.news_paragraph}}</h4>
+    
+    <div class="container">
+      <div class="row">
+        <div class ="col-md-12">
+        </div>
+        <div class="col-md-5">
+          <h2 class="heading">Featured Mars Image</h2>
+          <img src="{{mars_data.featured_image}}">
+        </div>
+        <div class="col-md-1">
+        </div>
+            <div class="row" style="padding-left: 16px;">
+              <h3 class="header" > Mars Facts</h3>
+                <table>
+                  {{mars_data.mars_table}}
+                </table>
+            </div>
+        </div>
+        </div>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <h2 class="heading">Mars Hemispheres</h2>
+        </div>
+        <div class="col-md-6">
+            {% for x in mars_data.hemispheres[0] %}
+            <h4>{{x.title}}</h4>
+            <img src="{{x.img_url}}">
+            {% endfor %}
+
+            {% for x in mars_data.hemispheres[1] %}
+            <h4>{{x.title}}</h4> 
+            <img src="{{x.img_url}}">
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            {% for x in mars_data.hemispheres[2] %}
+            <h4>{{x.title}}</h4> 
+            <img src="{{x.img_url}}">
+            {% endfor %}
+            
+            {% for x in mars_data.hemispheres[3] %}
+            <h4>{{x.title}}</h4>
+            <img src="{{x.img_url}}">
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
 </body>
+
 </html>
