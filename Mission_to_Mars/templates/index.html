@@ -4,6 +4,8 @@
 <!---Bootstrap and CSS-->
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="bootstrap.css">
@@ -14,70 +16,65 @@
 
     <div class="jumbotron text-center">
       <h1>Mission To Mars</h1>
+      <p>The purpose of this dashboard is to display data about the planet Mars from the Mission to Mars homework assignment.</p>
+      <p>See below for the latest news, featured image, facts, and more info on the Mars hemispheres!</p>
+      <p>Click the button below to scrape the webpages.</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
     </div>
   
     <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="heading">Latest Mars News</h2>
-        <b><h3 class="heading">{{mars_data.news_title}}</h3></b>
-        <b><h3 class="heading">{{mars_data.news_paragraph}}</h3></b>
-        <h4>{{mars_data.news_paragraph}}</h4>
-    
-    <div class="container">
       <div class="row">
-        <div class ="col-md-12">
-        </div>
-        <div class="col-md-5">
-          <h2 class="heading">Featured Mars Image</h2>
-          <img src="{{mars_data.featured_image}}">
-        </div>
-        <div class="col-md-1">
-        </div>
-            <div class="row" style="padding-left: 16px;">
-              <h3 class="header" > Mars Facts</h3>
-                <table>
-                  {{mars_data.mars_table}}
-                </table>
-            </div>
-        </div>
+        <div class="col-md-12">
+          <h2 class="heading">Latest Mars News</h2>
+          <br>
+          <h3 class="heading">{{mars.news_title}}</h3>
+          <h5 class="heading">{{mars.news_paragraph}}</h5>
+          <br></br>
         </div>
       </div>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="heading">Featured Mars Image</h2>
+          <br>
+          <b><img src="{{mars.featured_image_url | safe }}" alt="Featured Mars Image">></b>
+          <br>
+        <div class="col-md-6">
+          <h5>Mars Facts</h5>
+          {{mars.html_table | safe }}
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+    <br>
+    <br>
+
     <div class="container">
       <div class="row">
         <div class="col-md-12">
             <h2 class="heading">Mars Hemispheres</h2>
-        </div>
-        <div class="col-md-6">
-            {% for x in mars_data.hemispheres[0] %}
-            <h4>{{x.title}}</h4>
-            <img src="{{x.img_url}}">
-            {% endfor %}
+            </div>
+        <div class="row">       
+          {% for hemisphere in mars.hemisphere_images %} 
+            <div class="col-6 border">
+            </br>
+                  <div>
+                    <img width="512 px" height="512 px" src="{{hemisphere.img_url | safe }}">
+                  </div>
 
-            {% for x in mars_data.hemispheres[1] %}
-            <h4>{{x.title}}</h4> 
-            <img src="{{x.img_url}}">
+                  <div>
+                    <h4> {{hemisphere.title | safe }} </h4>  
+                  </div>
+            </div>
             {% endfor %}
-        </div>
-        <div class="col-md-6">
-            {% for x in mars_data.hemispheres[2] %}
-            <h4>{{x.title}}</h4> 
-            <img src="{{x.img_url}}">
-            {% endfor %}
-            
-            {% for x in mars_data.hemispheres[3] %}
-            <h4>{{x.title}}</h4>
-            <img src="{{x.img_url}}">
-            {% endfor %}
-        </div>
-      </div>
+          </div>
     </div>
     </div>
-      </div>
-    </div>
-  </div>
-
+  
   </div>
 </body>
 
